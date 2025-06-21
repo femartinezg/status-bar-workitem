@@ -1,0 +1,100 @@
+{
+  "name": "status-bar-workitem",
+  "displayName": "Status Bar WorkItem",
+  "version": "1.0.0",
+  "description": "A lightweight extension to display and copy customizable text in the status bar with ease.",
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "productivity",
+    "status bar",
+    "work item",
+    "copy text"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "publisher": "femartinezg",
+  "author": {
+    "name": "Fernando Martinez",
+    "url": "https://github.com/femartinezg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/femartinezg/status-bar-workitem"
+  },
+  "main": "./out/extension.js",
+  "icon": "media/icon128.png",
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "Status Bar WorkItem Settings",
+      "properties": {
+        "statusBarWorkItem.showIcon": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show the icon for editing the status text.",
+          "order": 1
+        },
+        "statusBarWorkItem.textColor": {
+          "type": "string",
+          "default": "",
+          "description": "Set the color of the status text (e.g., #FF0000 for red).",
+          "order": 2
+        },
+        "statusBarWorkItem.copyOnlyText": {
+          "type": "boolean",
+          "default": false,
+          "description": "Copy the status text without icons.",
+          "order": 3
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "status-bar-workitem.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "extension.editWorkItemText",
+        "title": "Status Bar WorkItem: Edit Text"
+      },
+      {
+        "command": "extension.copyWorkItemText",
+        "title": "Status Bar WorkItem: Copy Text"
+      },
+      {
+        "command": "extension.changeTextColor",
+        "title": "Status Bar WorkItem: Change Text Color"
+      },
+      {
+        "command": "extension.openWorkItemSettings",
+        "title": "Status Bar WorkItem: Open Settings"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.101.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
